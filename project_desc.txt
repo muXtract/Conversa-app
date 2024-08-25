@@ -1,0 +1,61 @@
+express - web framework for node.js. it simplifies the process of creating web servers and apis in node.js . (used for creating routes in this app ) 
+brcyptjs - to hash the passwords 
+mongoose - to connect db
+socket.io -real time chat 
+JWT- create tokens , nodemon is used so that we don't have to kill the sever and get it up everytime we make changes . postman 
+
+commands to run the app 
+1- npm run server- in the hood terminal  - to run the backend 
+
+2-backend->utils->generateTokens.js->const token expires in 15d , (change it before interview
+
+3- at the same location, cookie also lives for 15 days .make sure to update 
+
+4- vite+tailwind css
+5- daisy UI framework  - chat interface (messages with picture on side )
+(CHAT BUBBLE component -  chat-start means chat coming from other user , chat-end means chat is going from your end )
+
+)
+6-learned about props in a deeper way . props are nothing but  function calls , from child( where the component is defined ) to the parent (where the component is used in our app ) 
+
+7- connected frontend to the backend . frontend called backend apis for signup and login 
+
+8-how did i authenticate the user pass during login? 
+-search the db for finding the username that was entered by the user and check if it exists  in our db or not 
+- if the username does exist , compare the password put in by the user and the actual password of this user stored in the db (during signup) . if they match , the user is logged in , 
+else an error  is returned 
+
+9-used zustand for global state handling 
+
+10-Search bar functionality 
+- I had maintained a few global states using a framework called zustand . they can be used across any component of  my app 
+- now lets say i type a name in my search bar and i press the search button (submit type )
+- on submitting , my algo would call the backend api to fetch me data of all the users present . (useGetConversations)
+-now within all these users i would search for the user with same name as the one typed in my search bar . 
+- if the name matches i would update one of global states called setSelectedConversation and point it to that person i searched for . 
+- this selectedConversation state , updates the bg color of the selected user to green and fetches all of the messages 
+
+
+11- USE OF SOCKET.IO
+- without socket.io , a user sends a message , a req is sent to our express server , the messasge is sent to the database .
+-in order for the other user to receive the msg , they need to refresh the page , this isnot efficient and not real time 
+-so we build a sokcet server on top of our express server 
+- using socket we implement real time online/offline and real time messaging . 
+- we listen for connections . whenever a user is connected , we get a unique socket id
+
+A- ONLINE STATUS 
+
+-whenever a user logs in ,a socket.io connection (server) is established along with the userId . theyre added to an array which stores all the online users .all the users inside this array have an online status as seen by other clients . 
+-whenever a user logs out , the user is removed from the array 'onlineUsers' and the users not in the array are shown as offline to all other clients.
+
+ FRONTEND 
+-maintained a bool 'isOnline' for each user which . it gives true if the user exists in our 'onlineUsers' array . if its true , then the status  is shown as online  else offline 
+
+B- REAL TIME MESSAGING
+
+
+
+
+
+
+	
