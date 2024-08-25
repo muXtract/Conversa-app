@@ -19,7 +19,7 @@ export const SocketContextProvider=({children})=>{
         if(authUser)
         {
             //establish a socket connection 
-            const socket=io("http://localhost:5000",
+            const socket=io("https://conversa-aukm.onrender.com/",
                 {
                     query:{
                         userId:authUser._id

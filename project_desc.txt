@@ -52,6 +52,20 @@ A- ONLINE STATUS
 -maintained a bool 'isOnline' for each user which . it gives true if the user exists in our 'onlineUsers' array . if its true , then the status  is shown as online  else offline 
 
 B- REAL TIME MESSAGING
+-whenever a msg is sent , a socket event is sent to the receiver which contains the msg . 
+-the msg is saved to the db , and the event is listened to immediately at the client side , where the msg array state is updated with the new message and displayed immediately.
+
+12- node.js for deployment 
+
+13- 
+LOCAL deployment 
+cd ..
+   npm run build 
+npm start 
+localhost:5000
+
+14- make sure to change the deployment url in SocketContext.jsx file , with latest one 
+
 
 
 
